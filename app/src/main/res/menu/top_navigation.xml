@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/instagram_new_post_outline_24"
+        android:title="post"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/direct"
+        android:title="direct"
+        app:showAsAction="always" />
+</menu>

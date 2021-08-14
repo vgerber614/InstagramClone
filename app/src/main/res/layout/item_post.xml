@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivPost"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/tvUser"
+        android:layout_marginTop="10dp"
+        android:maxHeight="350dp"
+        android:minHeight="260dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivHeart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_below="@+id/ivPost"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/ufi_heart" />
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="johnfoo" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivHeart"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="16sp"
+        tools:text="Selfie!" />
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignTop="@+id/ivHeart"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/ivHeart"
+        app:srcCompat="@drawable/ufi_comment" />
+
+    <ImageView
+        android:id="@+id/ivComment2"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignTop="@+id/ivPlane"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="15dp"
+        app:srcCompat="@drawable/ufi_save_active" />
+
+    <ImageView
+        android:id="@+id/ivPlane"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignTop="@+id/ivComment"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/ivComment"
+        app:srcCompat="@drawable/ufi_new_direct" />
+</RelativeLayout>
