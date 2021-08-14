@@ -19,6 +19,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DashFragment extends Fragment {
@@ -70,6 +71,7 @@ public class DashFragment extends Fragment {
                 }
                 // add all posts to feed and notify the adapter
                 feed.addAll(posts);
+                Collections.reverse(feed);
                 adapter.notifyDataSetChanged();
             }
         });
