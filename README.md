@@ -30,10 +30,10 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-Added refresh on part 2:
+Added refresh on part 2:  
 <img src='https://github.com/vgerber614/InstagramClone/blob/master/refresh.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-Rest of features already added in part 1:
+Rest of features already added in part 1:  
 <img src='https://github.com/vgerber614/InstagramClone/blob/master/walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
