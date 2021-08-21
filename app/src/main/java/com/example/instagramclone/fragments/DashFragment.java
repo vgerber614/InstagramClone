@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class DashFragment extends Fragment {
 
     RecyclerView rvFeed;
     PostsAdapter adapter;
+    SwipeRefreshLayout swipeContainer;
 
     private List<Post> feed;
 
@@ -45,18 +47,38 @@ public class DashFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         rvFeed = view.findViewById(R.id.rvFeed);
+        swipeContainer = view.findViewById(R.id.swipeContainer);
         
         feed = new ArrayList<>(); // initalize as empty list
         adapter = new PostsAdapter(getContext(), feed); // create adapter
         rvFeed.setAdapter(adapter); // set adapter to rv
         rvFeed.setLayoutManager(new LinearLayoutManager(getContext()));// set layout manager on rv
         queryPosts();
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                feed = new ArrayList<>(); // initalize as empty list
+                adapter = new PostsAdapter(getContext(), feed); // create adapter
+                rvFeed.setAdapter(adapter); // set adapter to rv
+                rvFeed.setLayoutManager(new LinearLayoutManager(getContext()));// set layout manager on rv
+                queryPosts();
+                swipeContainer.setRefreshing(false);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 
     private void queryPosts() {
         // specify class to query -- Post
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER); // include reference to user key
+        query.setLimit(20); // get 20 most recent posts
+        query.addDescendingOrder("createdAt");
         // get all posts
         query.findInBackground(new FindCallback<Post>() {
             @Override
@@ -71,7 +93,6 @@ public class DashFragment extends Fragment {
                 }
                 // add all posts to feed and notify the adapter
                 feed.addAll(posts);
-                Collections.reverse(feed);
                 adapter.notifyDataSetChanged();
             }
         });
